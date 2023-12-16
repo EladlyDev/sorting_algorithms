@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <stddef.h>
 
 /**
  * struct listint_s - Doubly linked list node
@@ -22,5 +23,9 @@ typedef struct listint_s
 /* Prototypes */
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
+void quick_sort(int *array, size_t size);
+void quick(int *array, int start, int end, size_t size);
+int partition(int *array, int start, int end, size_t size);
+void swap(int *x, int *y);
 
-#enif
+#endif
