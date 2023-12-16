@@ -1,0 +1,9 @@
+*.so
+a.out
+*cach*
+*.swp
+*.o
+*~
+*.gch
+*#
+*main*
