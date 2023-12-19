@@ -8,34 +8,42 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *pt, *current, *prev;
+	listint_t *pt, *curr, *prev;
 
-	pt = (*list)->next;
-	while (pt != NULL)
+	if (!list || !*list)
+		return;
+
+	for (pt = (*list)->next; pt != NULL; pt = pt->next)
 	{
-		current = pt;
-		prev = current->prev;
+		curr = pt;
+		prev = curr->prev;
 
-		while (prev->n > current->n)
+		while (prev != NULL && prev->n > curr->n)
 		{
-			swap_node(left->next, left);
-			left = left->prev;
+			swap_node(prev, curr);
+			print_list(*list);
+			prev = prev->prev;
+			curr = curr->prev;
 		}
 	}
 }
+
 /**
- * 5, 2, 1, 0
- * 2, 5, 1, 0
+ * swap_node - swaps two nodes in a dubly linked list
  *
- * 2, 1, 5, 0
- * 1, 2, 5, 0
- *
- * 1, 2, 0, 5
- * 1, 0, 2, 5
- * 0, 1, 2, 5
- *
- * 1: Iterate from i = 1 to size - 1
- * 2: j = i - 1
- * 3: WHILE j >= 0 AND array[j] > key
- * 4: 	swap(array[j + 1], array[j])
+ * @x: pointer to the first node
+ * @y: pointer to the second node
  */
+void swap_node(listint_t *x, listint_t *y)
+{
+	int tmp, *change;
+
+	if (!x || !y || x == y)
+		return;
+
+	tmp = x->n;
+	change = (int *)&x->n;
+	*change = y->n;
+	change = (int *)&y->n;
+	*change = tmp;
+}
